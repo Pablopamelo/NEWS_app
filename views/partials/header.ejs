@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content="width=device-width, initial-scale=1.0">
+    <meta name = "description" content = "Check the latest news thanks to the NEWS App created using NEWS API">
+    <meta name = "keywords" content = "NEWS new app latest world">
+    <title>NEWS App</title>
+    <link rel = "stylesheet" href = "/styles/main.css">
+    <link rel = "stylesheet" href = "/styles/partials.css">
+</head>
+
+<body>
+    
+    <div class = "header-container">
+        
+        <div class = "title">NEWS App</div>
+
+        <header>
+
+            <nav>
+             
+                <div class = "filters-menu">
+
+                    <form action = "/filter" method = "post">
+
+                        <div class = "query">
+                            <label for = "query">search</label>
+                            <input name = "query" id = "query" type = "text" required>
+                        </div>
+
+                        <div class = "amount">
+                            <label for = "pages">pages</label>
+                            <input name = "pages" id = "pages" class = "pages" type = "number" min = '1' max = '100' value = '1' required>
+                        </div>
+
+                        <div class = "end-point">
+                            <label for = "type">show</label>
+                            <select name = "type" id = "type" class = "type">
+                                <option value = "all" selected>all</option>
+                                <option value = "top">top headlines</option>
+                            </select>
+                        </div>
+
+                        <ul class = "filters">
+                            <li>
+                            <label for = "place">where</label>
+                            <select name = "place" id = "place">
+                                <option value = "en" selected>US</option>
+                                <option value = "pl" >Poland</option>
+                                <option value = "de" >Germany</option>
+                            </select>
+                            </li>
+                            <li>
+                                <label for = "sort">sort by</label>
+                                <select name = "sort" id = "sort" class = "sort">
+                                    <option value = "publishedAt" selected>newest</option>
+                                    <option value = "popularity">most popular</option>
+                                    <option value = "relevancy">relevant</option>
+                                </select>
+                            </li>
+                            <li>
+                                <label for = "date1">from</label>
+                                <input name = "date1" id = "date1" type = "date" class = "date1">
+                                <label style = "width: 2rem; text-align: center;" for = "date2">to</label>
+                                <input name = "date2" id = "date2" type = "date" class = "date2">
+                            </li>
+                        </ul>
+
+                        <input type = "submit" value = "filter">
+
+                    </form>
+                </div>
+            </nav> 
+
+        </header>
+
+    </div>
+
+    <script src = "/scripts/filters.js"></script>
+
+   

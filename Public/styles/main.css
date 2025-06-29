@@ -1,0 +1,17 @@
+html{
+    font-size: 20px;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.main-container{
+    margin-top: 5rem;
+    margin-left: 20rem;
+    padding: 0.5rem 1rem;
+    width: calc(100vw - 22rem);
+    height: calc(100vh - 7rem);
+    background-color: aquamarine;
+}
