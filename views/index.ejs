@@ -4,13 +4,20 @@
     <div class = "main-container">
         <main> 
             <% if(!locals.news){ %>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque ipsam et dolorum architecto, eius eligendi unde cupiditate error esse fugiat! Officiis quas, facere minus earum rerum similique illum veritatis odio.
+                <div class = "NoNews">
+                    Search for results lol
+                </div>
             <% }else{ %>
                 <% for(element of news){ %>
-                    <%= element.description %>
-                        <br/>
-                    <a href = <%= element.url %> > source </a>
-                        <br/> <br/>
+                    <div class = "s_news">
+                        <div class = "main_date"> <%= element.publishedAt %> </div>  
+                        <div class = "main_title"> <a href = <%= element.url %> > <%= element.title %> </a></div>
+                        <div class = "main_description"> <%= element.description %> </div>
+                        <div class = "main_img"> <img height = "300" width = "600" src = "<%= element.urlToImage %>" alt = "NEWS image" onerror="this.onerror=null; this.src='images/img_not_found.png';"/> </div>
+                    </div>
+                    <br/>
+                    <br/>
+                    
                 <% } %>
             <% } %>
         </main>

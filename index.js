@@ -19,6 +19,7 @@ app.post("/filter", async (req,res) => {
     const pages = req.body.pages;
     const type = req.body.type;
     const place = req.body.place;
+    
     const config = {
         params:{
             q: query,
@@ -26,6 +27,13 @@ app.post("/filter", async (req,res) => {
             apiKey: apiKey, 
         }
     }
+
+    const filterConfig = {
+        q: query,
+        pageSize: pages,
+        place: place
+    }
+
     if(type == "all"){
         const sort = req.body.sort;
         const date1 = req.body.date1;
@@ -35,17 +43,25 @@ app.post("/filter", async (req,res) => {
         config.params.language = place;
         config.params.from = date1;
         config.params.to = date2;
+        filterConfig.sort = sort,
+        filterConfig.language = place,
+        filterConfig.date1 = date1,
+        filterConfig.date2 = date2
+        filterConfig.type = "all";
     }else{
         const category = req.body.category;
         var endPoint = "top-headlines";
         config.params.country = place;
         config.params.category = category;
+        filterConfig.country = place;
+        filterConfig.category = category;
+        filterConfig.type = "top";
     }
 
     try{
         const response = await axios.get(URL_API + endPoint, config);
         const result = response.data;
-        res.render("index.ejs", {news: result.articles});
+        res.render("index.ejs", {news: result.articles, filters: filterConfig});
     }catch(error){
         console.log(error.response.status);
         console.log(error.response.data);
