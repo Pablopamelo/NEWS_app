@@ -19,6 +19,7 @@ app.post("/filter", async (req,res) => {
     const pages = req.body.pages;
     const type = req.body.type;
     const place = req.body.place;
+    
     const config = {
         params:{
             q: query,
@@ -30,9 +31,9 @@ app.post("/filter", async (req,res) => {
     const filterConfig = {
         q: query,
         pageSize: pages,
-        type: type,
         place: place
     }
+
     if(type == "all"){
         const sort = req.body.sort;
         const date1 = req.body.date1;
@@ -46,6 +47,7 @@ app.post("/filter", async (req,res) => {
         filterConfig.language = place,
         filterConfig.date1 = date1,
         filterConfig.date2 = date2
+        filterConfig.type = "all";
     }else{
         const category = req.body.category;
         var endPoint = "top-headlines";
@@ -53,6 +55,7 @@ app.post("/filter", async (req,res) => {
         config.params.category = category;
         filterConfig.country = place;
         filterConfig.category = category;
+        filterConfig.type = "top";
     }
 
     try{
