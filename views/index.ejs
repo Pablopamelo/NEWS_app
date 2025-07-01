@@ -9,12 +9,11 @@
                 </div>
             <% }else{ %>
                 <% for(element of news){ %>
-                    <div style="font-size: 1rem;" class = "s_news">
-                        <div style="font-size: 1rem;"> <%= element.publishedAt %> </div>  
-                        <div style="font-size: 1rem;"> <%= element.title %> </div>
-                        <div style="font-size: 1rem;"> <%= element.description %> </div>
-                        <div style="font-size: 1rem;"> <img height = "300" widht = "300" src = "<%= element.urlToImage %>" alt = "news image"/> </div>
-                        <div style="font-size: 1rem;"><a href = <%= element.url %> > source </a></div>  
+                    <div class = "s_news">
+                        <div class = "main_date"> <%= element.publishedAt %> </div>  
+                        <div class = "main_title"> <a href = <%= element.url %> > <%= element.title %> </a></div>
+                        <div class = "main_description"> <%= element.description %> </div>
+                        <div class = "main_img"> <img height = "300" width = "600" src = "<%= element.urlToImage %>" alt = "NEWS image" onerror="this.onerror=null; this.src='images/img_not_found.png';"/> </div>
                     </div>
                     <br/>
                     <br/>
