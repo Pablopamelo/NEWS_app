@@ -1,8 +1,7 @@
 const select = document.querySelector("#type");
 const filters = document.querySelector(".filters");
 
-select.addEventListener("change", function(){
-    const option = this.value;
+function show(option){
     if(option == "top"){
         filters.innerHTML = `<li>
                             <label for = "place">Where</label>
@@ -43,8 +42,18 @@ select.addEventListener("change", function(){
                             <li>
                                 <label for = "date1">From</label>
                                 <input name = "date1 id = "date1" type = "date" class = "date1">
-                                <label style = "width: 2rem; text-align: center;" for = "date2">to</label>
+                                <label style = "width: 1.4rem; text-align: center;" for = "date2">to</label>
                                 <input name = "date2" id = "date2" type = "date" class = "date2">
                             </li>`;
     }
+}
+
+select.addEventListener("change", function(){
+    const option = this.value;
+    show(option);
+});
+
+window.addEventListener("DOMContentLoaded", () => {
+    const option = select.value;
+    show(option);
 });
