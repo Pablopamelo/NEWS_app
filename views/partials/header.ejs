@@ -30,8 +30,8 @@
                                 name="query" 
                                 id="query" 
                                 type="text" 
-                                <% if (filters) { %>
-                                value="<%= filters.q %>"
+                                <% if (locals.filters) { %>
+                                    value="<%= filters.q %>"
                                 <% } %>
                                 required
                                 >
@@ -39,40 +39,43 @@
 
                         <div class = "amount">
                             <label for = "pages">Pages</label>
-                            <input name = "pages" id = "pages" class = "pages" type = "number" min = '1' max = '100' value = '1' required>
+                            <input 
+                                name = "pages" 
+                                id = "pages" 
+                                class = "pages" 
+                                type = "number" 
+                                min = '1' 
+                                max = '100' 
+                                <% if (locals.filters) { %>
+                                    value="<%= filters.pageSize %>"
+                                <% }else{ %>
+                                    value = '1'
+                                <% } %>
+                                required>
                         </div>
 
                         <div class = "end-point">
                             <label for = "type">Show</label>
                             <select name = "type" id = "type" class = "type">
-                                <option value = "all" selected>all</option>
-                                <option value = "top">top headlines</option>
+                                <option 
+                                    value = "all" 
+                                    <% if (!locals.filters || locals.filters.type == "all") { %>
+                                        selected
+                                    <% } %>
+                                    >
+                                    all</option>
+                                <option 
+                                    value = "top"
+                                    <% if (locals.filters && locals.filters.type == "top") { %>
+                                        selected
+                                    <% } %>
+                                    >
+                                    top headlines</option>
                             </select>
                         </div>
 
                         <ul class = "filters">
-                            <li>
-                            <label for = "place">Where</label>
-                            <select name = "place" id = "place">
-                                <option value = "en" selected>US</option>
-                                <option value = "pl" >Poland</option>
-                                <option value = "de" >Germany</option>
-                            </select>
-                            </li>
-                            <li>
-                                <label for = "sort">Sort by</label>
-                                <select name = "sort" id = "sort" class = "sort">
-                                    <option value = "publishedAt" selected>newest</option>
-                                    <option value = "popularity">most popular</option>
-                                    <option value = "relevancy">relevant</option>
-                                </select>
-                            </li>
-                            <li>
-                                <label for = "date1">From</label>
-                                <input name = "date1" id = "date1" type = "date" class = "date1" required>
-                                <label style = "width: 1.4rem; text-align: center;" for = "date2">to</label>
-                                <input name = "date2" id = "date2" type = "date" class = "date2" required>
-                            </li>
+                            
                         </ul>
 
                         <input type = "submit" value = "Search">
